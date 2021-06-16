@@ -15,3 +15,29 @@
 4. Request an authentication key for your google drive: https://developers.google.com/oauthplayground/
 
 5. Start the server using the command: server.py -f (fps) -t (treshhold) -c (maxClients) -a (google drive auth key)
+
+
+### Installation guide frontend app
+
+## In a terminal run npm install yarn
+
+```
+    npm install --global yarn
+```
+
+## Open project
+
+```
+    yarn install
+```
+
+## Install expoGo
+
+- App store: https://itunes.apple.com/app/apple-store/id982107779
+- Google play: https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
+
+## Run project
+
+```
+    yarn start
+```
