@@ -121,25 +121,26 @@ const Detail = ({ route, navigation }: any) => {
           <TouchableOpacity
             style={inputs.buttonWhite}
             disabled={isUploading}
-            onPress={() => {
+            onPress={async () => {
               setIsUploading(true);
-              const videoFile: any = {
-                uri: video.uri,
-                type: 'video/mp4',
-                name: video.filename,
-              };
+              let form_data = new FormData();
+              form_data.append('video', video.uri, video.filename);
 
-              fetch('', {
-                // Your POST endpoint
+              fetch('http://10.2.167.3:5000/upload', {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'video/mp4',
+                  Accept: 'multipart/form-data',
+                  'Content-Type': 'multipart/form-data',
                 },
-                body: videoFile, // This is your file object
+                body: video,
               })
                 .then((response) => response.json())
-                .then((success) => console.log(success))
+                .then((success) => {
+                  console.log(success);
+                  setIsUploading(false);
+                })
                 .catch((error) => {
+                  console.error(error);
                   setIsUploading(false);
                   Alert.alert(`Failed to upload`, ``, [
                     {
