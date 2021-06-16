@@ -126,6 +126,7 @@ const Detail = ({ route, navigation }: any) => {
               let form_data = new FormData();
               form_data.append('video', video.uri, video.filename);
 
+              // ip veranderen naar ip van pc, smartphone moet ook op zelfde netwerk zitten
               fetch('http://10.2.167.3:5000/upload', {
                 method: 'POST',
                 headers: {
