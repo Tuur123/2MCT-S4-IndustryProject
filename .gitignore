@@ -82,3 +82,6 @@ buck-out/
 
 AI/imageClassification/models/*/logs/*
 Backend/server/__pycache__
+AI/imageClassification/preprocessing.py
+Backend/server/out/out.mp4
+AI/poseClassification/tensorflow/logs/*
