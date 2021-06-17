@@ -45,7 +45,16 @@ from clienthandler import ClientHandler
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serversocket.bind((socket.gethostname(), 9999))
 serversocket.listen(maxClients)
+
+
+def startFileServer():
+    os.system('py fileServer.py')
+
+fileServerThread = threading.Thread(target=startFileServer)
+fileServerThread.start()
+
 print("SERVER STARTED")
+
 
 
 try:
@@ -56,6 +65,8 @@ try:
         clh = ClientHandler(clientSocket, fps, treshhold, gDriveAuthKey)
         clh.start()
 
+
 except KeyboardInterrupt:
     serversocket.close()
+    fileServerThread.join()
     print("Closing")
